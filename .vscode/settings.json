@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/25af1777-f189-43ea-9bff-da0a6e46bcef/AppServices/subscriptions/25af1777-f189-43ea-9bff-da0a6e46bcef/resourceGroups/desafiobackendapi_group/providers/Microsoft.Web/sites/desafiobackendwebapi",
+    "appService.deploySubpath": "bin\\Release\\net6.0\\publish"
+}
