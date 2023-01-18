@@ -31,6 +31,7 @@ namespace DesafioWebApi.Repositorios
 
         public async Task<ClienteModel> Adicionar(Cadastro cadastro)
         {
+
             var verificaCadastroExistente = await VerificarClienteExistente(cadastro.Email);
 
             if (verificaCadastroExistente)
@@ -85,9 +86,9 @@ namespace DesafioWebApi.Repositorios
 
             var cotacaoResul = cotacao.DadosRetorno.USDBRL;
 
-            var valorCotadoEmReais = valorParaCotar * Convert.ToDecimal(cotacaoResul.ValorBaixo);
+            var valorCotadoEmReais = valorParaCotar / Convert.ToDecimal(cotacaoResul.ValorBaixo);
 
-            var valorComTaxa = valorParaCotar * Convert.ToDecimal(cotacaoResul.ValorAlto);
+            var valorComTaxa = valorParaCotar / Convert.ToDecimal(cotacaoResul.ValorAlto);
 
             var clienteResul = new ClienteDto
             {
@@ -145,5 +146,6 @@ namespace DesafioWebApi.Repositorios
 
             return response;
         }
+
     }
 }
