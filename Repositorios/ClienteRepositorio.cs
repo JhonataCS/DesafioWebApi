@@ -86,9 +86,9 @@ namespace DesafioWebApi.Repositorios
 
             var cotacaoResul = cotacao.DadosRetorno.USDBRL;
 
-            var valorCotadoEmReais = valorParaCotar / Convert.ToDecimal(cotacaoResul.ValorBaixo);
+            var valorOriginal= valorParaCotar / Convert.ToDecimal(cotacaoResul.Bid);
 
-            var valorComTaxa = valorParaCotar / Convert.ToDecimal(cotacaoResul.ValorAlto);
+            var valorComTaxa = cliente.Multiplicador * valorOriginal;
 
             var clienteResul = new ClienteDto
             {
@@ -101,9 +101,8 @@ namespace DesafioWebApi.Repositorios
             {
                 Cliente = clienteResul,
                 ValorCotadoEmReais = valorParaCotar,
-                ValorOriginal = valorCotadoEmReais,
+                ValorOriginal = valorOriginal,
                 ValorComTaxa = valorComTaxa
-
             };
 
             response.CodigoHttp = HttpStatusCode.OK;
@@ -129,9 +128,9 @@ namespace DesafioWebApi.Repositorios
 
             var cotacaoResul = cotacao.DadosRetorno.USDBRL;
 
-            var valorOriginal= Convert.ToDecimal(cotacaoResul.ValorBaixo);
+            var valorOriginal= Convert.ToDecimal(cotacaoResul.VarBid);
 
-            var valorComTaxa = Convert.ToDecimal(cotacaoResul.ValorAlto);
+            var valorComTaxa = cliente.Multiplicador * Convert.ToDecimal(cotacaoResul.Bid);
 
             var clienteCotacao = new CotacaoDto
             {
